@@ -4,6 +4,11 @@ function game(){
     for(let i=1; i<=5; i++) {
         let playerSelection = prompt("Choose Rock, Paper, or Scissors");
         let caseInsensitivePlayerSelection = playerSelection.toUpperCase(); //always take the result and make it uppercase for case insensitivity when rock, paper, scissors game is played
+        while(caseInsensitivePlayerSelection !=="ROCK" && caseInsensitivePlayerSelection !=="PAPER" && caseInsensitivePlayerSelection !=="SCISSORS"){   //Make sure user entered case insensitive rock, paper, or scissors
+            alert("Invalid Selection");
+            playerSelection = prompt("Please enter from these options: Rock, Paper, or Scissors");
+            caseInsensitivePlayerSelection = playerSelection.toUpperCase();
+        }
         playRound(caseInsensitivePlayerSelection, getComputerChoice());
     }
     if(playerWin>computerWin){
@@ -23,12 +28,7 @@ function game(){
     }
 }
 function playRound(playerSelection, computerSelection){                     //Determines the winner of rock, paper, scissors
-    if(playerSelection !=="ROCK" && playerSelection !=="PAPER" && playerSelection !=="SCISSORS"){   //Make sure user entered case insensitive rock, paper, or scissors
-        console.log("Invalid Selection")
-        alert("Invalid Selection");
-        return
-    }
-    else if(playerSelection=="ROCK" && computerSelection=="SCISSORS"){
+    if(playerSelection=="ROCK" && computerSelection=="SCISSORS"){
         playerWin++;
         console.log("You Won. "+playerSelection+" beats "+computerSelection);
         return playerWin
