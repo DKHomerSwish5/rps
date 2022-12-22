@@ -1,17 +1,30 @@
 let playerWin = 0;
 let computerWin = 0;
 function game(){
-    for(let i=1; i<=5; i++) {
-        let playerSelection = prompt("Choose Rock, Paper, or Scissors");
-        let caseInsensitivePlayerSelection = playerSelection.toUpperCase(); //always take the result and make it uppercase for case insensitivity when rock, paper, scissors game is played
-        while(caseInsensitivePlayerSelection !=="ROCK" && caseInsensitivePlayerSelection !=="PAPER" && caseInsensitivePlayerSelection !=="SCISSORS"){   //Make sure user entered case insensitive rock, paper, or scissors
+ //   for(let i=1; i<=5; i++) {
+ //       let playerSelection = prompt("Choose Rock, Paper, or Scissors");
+ //       let caseInsensitivePlayerSelection = playerSelection.toUpperCase(); //always take the result and make it uppercase for case insensitivity when rock, paper, scissors game is played
+ /*       while(caseInsensitivePlayerSelection !=="ROCK" && caseInsensitivePlayerSelection !=="PAPER" && caseInsensitivePlayerSelection !=="SCISSORS"){   //Make sure user entered case insensitive rock, paper, or scissors
             alert("Invalid Selection");
             playerSelection = prompt("Please enter from these options: Rock, Paper, or Scissors");
             caseInsensitivePlayerSelection = playerSelection.toUpperCase();
-        }
-        playRound(caseInsensitivePlayerSelection, getComputerChoice());
-    }
-    if(playerWin>computerWin){
+          }*/
+    const rock = document.getElementById('rock');
+    const paper = document.getElementById('paper');
+    const scissors = document.getElementById('scissors');
+
+    rock.addEventListener('click', (e) => {
+        playRound("ROCK", getComputerChoice());
+    });
+    paper.addEventListener('click', (e) => {
+        playRound("PAPER", getComputerChoice());
+    });
+    scissors.addEventListener('click', (e) => {
+        playRound("SCISSORS", getComputerChoice());
+    });
+   // playRound(caseInsensitivePlayerSelection, getComputerChoice());
+   // }
+/*    if(playerWin>computerWin){
         console.log(playerWin);
         console.log(computerWin);
         alert("You are the overall winner");
@@ -26,35 +39,35 @@ function game(){
         console.log(computerWin);
         alert("You are the overall loser");
     }
-}
+}*/
 function playRound(playerSelection, computerSelection){                     //Determines the winner of rock, paper, scissors
     if(playerSelection=="ROCK" && computerSelection=="SCISSORS"){
-        playerWin++;
+    //    playerWin++;
         console.log("You Won. "+playerSelection+" beats "+computerSelection);
         return playerWin
     }
     else if(playerSelection=="PAPER" && computerSelection=="ROCK"){
-        playerWin++;
+    //    playerWin++;
         console.log("You Won. "+playerSelection+" beats "+computerSelection);
         return playerWin
     }
     else if(playerSelection=="SCISSORS" && computerSelection=="PAPER"){
-        playerWin++;
+    //    playerWin++;
         console.log("You Won. "+playerSelection+" beats "+computerSelection);
         return playerWin
     }
     else if(playerSelection=="SCISSORS" && computerSelection=="ROCK"){
-        computerWin++;
+    //    computerWin++;
         console.log("You Lost. "+computerSelection+" beats "+playerSelection);
         return computerWin
     }
     else if(playerSelection=="ROCK" && computerSelection=="PAPER"){
-        computerWin++;
+    //    computerWin++;
         console.log("You Lost. "+computerSelection+" beats "+playerSelection);
         return computerWin
     }
     else if(playerSelection=="PAPER" && computerSelection=="SCISSORS"){
-        computerWin++;
+    //    computerWin++;
         console.log("You Lost. "+computerSelection+" beats "+playerSelection);
         return computerWin
     }
@@ -74,5 +87,6 @@ function getComputerChoice(){
         case 3:
             return "PAPER";
     }
+}
 }
 game();
