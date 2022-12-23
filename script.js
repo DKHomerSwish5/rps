@@ -1,18 +1,10 @@
 let playerWin = 0;
 let computerWin = 0;
+const div = document.createElement('div');
 function game(){
- //   for(let i=1; i<=5; i++) {
- //       let playerSelection = prompt("Choose Rock, Paper, or Scissors");
- //       let caseInsensitivePlayerSelection = playerSelection.toUpperCase(); //always take the result and make it uppercase for case insensitivity when rock, paper, scissors game is played
- /*       while(caseInsensitivePlayerSelection !=="ROCK" && caseInsensitivePlayerSelection !=="PAPER" && caseInsensitivePlayerSelection !=="SCISSORS"){   //Make sure user entered case insensitive rock, paper, or scissors
-            alert("Invalid Selection");
-            playerSelection = prompt("Please enter from these options: Rock, Paper, or Scissors");
-            caseInsensitivePlayerSelection = playerSelection.toUpperCase();
-          }*/
     const rock = document.getElementById('rock');
     const paper = document.getElementById('paper');
     const scissors = document.getElementById('scissors');
-
     rock.addEventListener('click', (e) => {
         playRound("ROCK", getComputerChoice());
     });
@@ -22,61 +14,135 @@ function game(){
     scissors.addEventListener('click', (e) => {
         playRound("SCISSORS", getComputerChoice());
     });
-   // playRound(caseInsensitivePlayerSelection, getComputerChoice());
-   // }
-/*    if(playerWin>computerWin){
-        console.log(playerWin);
-        console.log(computerWin);
-        alert("You are the overall winner");
-    }
-    else if(playerWin==computerWin){
-        console.log(playerWin);
-        console.log(computerWin);
-        alert("You are tied overall")
-    }
-    else{
-        console.log(playerWin);
-        console.log(computerWin);
-        alert("You are the overall loser");
-    }
-}*/
+}
 function playRound(playerSelection, computerSelection){                     //Determines the winner of rock, paper, scissors
     if(playerSelection=="ROCK" && computerSelection=="SCISSORS"){
-    //    playerWin++;
-        console.log("You Won. "+playerSelection+" beats "+computerSelection);
+        playerWin++;
+        if(playerWin==5){
+                div.textContent = "You won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+                document.body.appendChild(div);
+                playerWin = 0;
+                computerWin = 0;
+                return;
+        }
+        else if(computerWin==5){
+                div.textContent = "The computer won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+                document.body.appendChild(div);
+                playerWin = 0;
+                computerWin = 0;
+                return;
+        }        
+        div.textContent = "You Won. "+playerSelection+" beats "+computerSelection +'.'+" SCORE: Player-"+playerWin+" Computer-"+computerWin;
+        document.body.appendChild(div);
         return playerWin
     }
     else if(playerSelection=="PAPER" && computerSelection=="ROCK"){
-    //    playerWin++;
-        console.log("You Won. "+playerSelection+" beats "+computerSelection);
+        playerWin++;
+        if(playerWin==5){
+            div.textContent = "You won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }
+        else if(computerWin==5){
+            div.textContent = "The computer won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }        
+        div.textContent = "You Won. "+playerSelection+" beats "+computerSelection+'.'+" SCORE: Player-"+playerWin+" Computer-"+computerWin;
+        document.body.appendChild(div);
         return playerWin
     }
     else if(playerSelection=="SCISSORS" && computerSelection=="PAPER"){
-    //    playerWin++;
-        console.log("You Won. "+playerSelection+" beats "+computerSelection);
+        playerWin++;
+        if(playerWin==5){
+            div.textContent = "You won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }
+        else if(computerWin==5){
+            div.textContent = "The computer won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }        
+        div.textContent = "You Won. "+playerSelection+" beats "+computerSelection+'.'+" SCORE: Player-"+playerWin+" Computer-"+computerWin;
+        document.body.appendChild(div);
         return playerWin
     }
     else if(playerSelection=="SCISSORS" && computerSelection=="ROCK"){
-    //    computerWin++;
-        console.log("You Lost. "+computerSelection+" beats "+playerSelection);
+        computerWin++;
+        if(playerWin==5){
+            div.textContent = "You won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }
+        else if(computerWin==5){
+            div.textContent = "The computer won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }        
+        div.textContent = "You Lost. "+computerSelection+" beats "+playerSelection+'.'+" SCORE: Player-"+playerWin+" Computer-"+computerWin;
+        document.body.appendChild(div);
         return computerWin
     }
     else if(playerSelection=="ROCK" && computerSelection=="PAPER"){
-    //    computerWin++;
+        computerWin++;
+        if(playerWin==5){
+            div.textContent = "You won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }
+        else if(computerWin==5){
+            div.textContent = "The computer won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }        
         console.log("You Lost. "+computerSelection+" beats "+playerSelection);
+        div.textContent = "You Lost. "+computerSelection+" beats "+playerSelection+'.'+" SCORE: Player-"+playerWin+" Computer-"+computerWin;
+        document.body.appendChild(div);
         return computerWin
     }
     else if(playerSelection=="PAPER" && computerSelection=="SCISSORS"){
-    //    computerWin++;
-        console.log("You Lost. "+computerSelection+" beats "+playerSelection);
+        computerWin++;
+        if(playerWin==5){
+            div.textContent = "You won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }
+        else if(computerWin==5){
+            div.textContent = "The computer won with 5 points"+" SCORE: Player-"+playerWin+" Computer-"+computerWin;;
+            document.body.appendChild(div);
+            playerWin = 0;
+            computerWin = 0;
+            return;
+        }        
+        div.textContent = "You Lost. "+computerSelection+" beats "+playerSelection+'.'+" SCORE: Player-"+playerWin+" Computer-"+computerWin;
+        document.body.appendChild(div);
         return computerWin
     }
     else{
-        console.log("There was a tie. You chose "+playerSelection+". The computer chose "+computerSelection);
-        alert("Tie");
+        div.textContent = "There was a tie. You chose "+playerSelection+". The computer chose "+computerSelection+'.'+" SCORE: Player-"+playerWin+" Computer-"+computerWin;
+        document.body.appendChild(div);
         return
     }
-}    
+}
 function getComputerChoice(){
     let choice = Math.floor(Math.random()*3+1); //Generate random computer choice via a number 1 through 3
     switch(choice){             //Takes the choices from 1 through 3 and ties it to Rock, Paper, or Scissors and returns the new choice
@@ -87,6 +153,5 @@ function getComputerChoice(){
         case 3:
             return "PAPER";
     }
-}
 }
 game();
